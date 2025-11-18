@@ -30,24 +30,39 @@ Your site will be live at: **https://satendra9984.github.io/privacy_policies/**
 3. Enter branch name: `main` (or `master`)
 4. Enable these settings:
    - ✅ **Require a pull request before merging**
-   - ✅ **Require status checks to pass before merging**
+     - Set **Required number of approvals before merging**: `0` (or `1` if you want to review your own PRs)
+     - ✅ **Require approvals** (if available)
    - ✅ **Do not allow bypassing the above settings**
-   - ✅ **Restrict who can push to matching branches** → Add yourself only
    - ✅ **Include administrators** (this protects you too!)
+   - ✅ **Require linear history** (optional, but recommended)
+   - ✅ **Require conversation resolution before merging** (optional)
 
-#### B. Disable External Contributions (Optional)
+**Note**: If you don't see "Restrict who can push to matching branches", the PR requirement will still protect your branch. You'll need to create PRs for changes, which adds an extra layer of protection.
+
+#### B. Disable External Contributions (IMPORTANT)
 
 1. Go to: https://github.com/Satendra9984/privacy_policies/settings
 2. Scroll to **Features** section
 3. Uncheck:
    - ❌ **Issues**
-   - ❌ **Pull requests**
+   - ❌ **Pull requests** (this prevents others from creating PRs)
    - ❌ **Discussions**
+   - ❌ **Wiki** (if you don't need it)
 
-### 4. Verify Protection
+**Important**: Disabling Pull Requests means only you can create PRs (since you're the owner), effectively blocking external contributions.
 
-- Try making a change directly on GitHub (should be blocked)
-- Only you can push via command line or approved PRs
+### 4. Additional Protection: Repository Settings
+
+1. Go to: https://github.com/Satendra9984/privacy_policies/settings
+2. Scroll to **Danger Zone** section
+3. Ensure **Repository visibility** is set to **Public** (required for free GitHub Pages)
+4. **Do NOT add any collaborators** - keep it as owner-only
+
+### 5. Verify Protection
+
+- Try making a change directly on GitHub main branch (should be blocked)
+- You can still push via command line: `git push origin main` (this works because you're the owner)
+- Others cannot push or create PRs (PRs are disabled)
 - Repository remains public for GitHub Pages
 
 ## ✅ Checklist

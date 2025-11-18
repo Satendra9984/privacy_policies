@@ -66,29 +66,34 @@ To ensure only you can make changes while keeping the repository public:
 4. Set **Branch name pattern** to `main` (or `master`)
 5. Enable the following:
    - ✅ **Require a pull request before merging**
-     - Require approvals: 1 (yourself)
-   - ✅ **Require status checks to pass before merging**
-   - ✅ **Require branches to be up to date before merging**
+     - Set **Required number of approvals**: `0` (since you're the only one)
+     - ✅ **Require approvals** (if available)
    - ✅ **Do not allow bypassing the above settings**
-   - ✅ **Restrict who can push to matching branches** (only you)
-   - ✅ **Include administrators** (so you're still protected)
+   - ✅ **Include administrators** (this protects you too!)
+   - ✅ **Require linear history** (optional, recommended)
 
-### 2. Disable Issues and Pull Requests (Optional)
+**Note**: If "Restrict who can push to matching branches" is not available, the PR requirement combined with disabled PRs feature (see below) will effectively protect your repository.
 
-If you want to completely prevent external contributions:
+### 2. Disable Issues and Pull Requests (RECOMMENDED)
+
+This is the key step to prevent external contributions:
 
 1. Go to **Settings** → **General**
 2. Scroll to **Features**
 3. Uncheck:
    - ❌ **Issues**
-   - ❌ **Pull requests**
+   - ❌ **Pull requests** ← **This is critical!** Prevents others from creating PRs
    - ❌ **Discussions**
    - ❌ **Wiki**
 
-### 3. Repository Visibility
+**Why this works**: By disabling Pull Requests, external users cannot create PRs. Since you're the owner, you can still push directly via command line (`git push origin main`), but the branch protection will prevent direct edits on GitHub.
+
+### 3. Repository Visibility and Access
 
 - Keep the repository **Public** (required for free GitHub Pages)
-- Only you will be able to push changes due to branch protection
+- **Do NOT add any collaborators** - keep it owner-only
+- Only you will be able to push changes via command line
+- Direct edits on GitHub will be blocked by branch protection
 
 ### 4. Additional Security
 
